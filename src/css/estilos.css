@@ -1,0 +1,194 @@
+html {
+    color: #fff;
+    scroll-behavior: smooth;
+}
+body {
+    /* background-color: #282828; */
+    background: linear-gradient(150deg, #06144b, #b566ea);
+    background-size: 120% 120%;
+    font-family: Poppins, sans-serif;
+    margin: 0 auto;
+    max-width: 1120px; /*Define o tamanho máximo do elemento Body*/
+}
+
+.cabecalho {
+    display: flex; /*Estiliza os elementos filhos em linha (row) por padrão, nesse caso, os elementos 'a' e 'nav'*/
+    justify-content: space-between; /*Alinha os itens Horizontalmente e coloca o espaço entre eles*/
+    align-items: center; /*Centraliza os alementos na Vertical*/
+    padding: 30px 15px;
+}
+.cabecalho .logo {
+    width: 65px;
+    height: 65px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    text-decoration: underline;
+    text-align: center;
+    line-height: 55px;
+    font-family: Raleway, sans-serif;
+    transition: 0.2s; /*Tempo em segundos pra transição de cor*/
+} /*.cabecalho .logo A classe .logo pertence a classe .cabecalho*/
+.cabecalho a:hover .logo {
+    color: #ffd700;
+    border: 2px solid #ffd700;
+}
+.cabecalho .menu li a {
+    font-size: 20px;
+    text-transform: capitalize; /*Primeiras letras de cada frase em maíscula*/
+    padding: 10px 20px;
+    transition: 0.2s;
+}
+.cabecalho .menu li a:hover {
+    background-color: #ffd700;
+    color: #06144b;
+    border-radius: 50px;
+}
+
+.home {
+    display: flex;
+    min-height: calc(100vh - 125px);/*min-height: 100vh; serve para preencher a tela com a Seção*/
+    /*No caso estamos subtraindo o tamanho do bloco 'Home=100vh' - 'Cabecalho=125px', faz o bloco Home preencher a tela toda*/
+    align-items: center;
+    gap: 50px;
+    justify-content: space-between;
+}
+.home .informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    letter-spacing: 2px;
+    padding: 0 15px;
+    max-width: 50%;
+}
+.home .informacoes h1 {
+    font-family: Raleway, sans-serif;
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+.home .informacoes p {
+    font-family: Raleway, sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.home .redes_sociais {
+    display: flex;
+    gap: 20px;
+}
+.home .redes_sociais a i {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    font-size: 28px;
+    transition: 0.3s;
+}
+.home .redes_sociais a i:hover {
+    color: #ffd700;
+    border: 1px solid #ffd700;
+    transform: scale(1.1); /*Aumenta um pouco o tamanho do icone ao passar o mouse*/
+}
+.home .container_foto .foto {
+    max-width: 450px;
+    border-radius: 50%;
+}
+.home .container_foto img {
+    width: 100%;
+    border-radius: 50%;
+}
+.home .foto.sombra_interna {
+    background: linear-gradient(to right, #00eea2, #764BA2, #667EEA);
+    background-size: 180% 180%;
+    animation: gradient-animation 5s ease infinite;
+} /*As classes .foto.sombra_interna ficam coladas por estarem no mesmo nível*/
+
+.projetos {
+    padding: 70px 0;
+}
+.projetos .titulo {
+    text-align: center;
+    padding: 60px 0;
+    font-size: 45px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.projetos .container_projetos {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;/*Ocupa a área da linha com quantos Projetos for possível e quebra a linha, colocando os demais Projetos embaixo do outro*/
+    margin-bottom: 20px;
+    justify-content: center; /*Alinha os Projetos no Centro, de forma Horizontal*/
+}
+.projetos .projeto {
+    max-width: 260px;
+    max-height: 500px;
+    position: relative;
+    display: none;
+}
+.projetos .projeto.ativo {
+    display: block;
+}
+.projetos .projeto img {
+    height: 100%;
+}
+.projetos .projeto h3 {
+    background-color: #040404;
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute; /*Div filho da classe .projeto que tem position: relative. Funciona junto com o relative que deve ser a Div pai sempre. Fica por cima da Div pai .projeto*/
+    bottom: 0; /*Permite colar o h3 no Final da Div pai (.projeto) que tem o Relative*/
+}
+.projetos .projeto .informacoes_projeto {
+    background-color: #040404;
+    position: absolute; /*Assim como o h3, essa Div usa como referência a Div pai .projeto e ficar por cima dela, permitindo sua movimentação pela ára da Div pai*/
+    top: 0; /*Permite colar a Div filho (.informacoes_projeto) no Topo da Div pai (.projeto) que tem o Relative*/
+    /*Position Absolte funciona como camadas, uma por cima da outra, tendo como referência o elemento pai com Position Relative*/
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+    opacity: 0;
+    transition: 0.3s;
+    padding: 20px;
+}
+.projetos .container_projetos .projeto:hover .informacoes_projeto{
+    opacity: 0.7;
+    background-color: #000;
+}
+.projetos .btn_mostrar_projeto {
+    background: none;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 16px;
+    width: 180px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /*Alinhas na Horizontal*/
+    align-items: center; /*Alinhas na Vertical*/
+    cursor: pointer;
+    transition: 0.3s;
+}
+.projetos .btn_mostrar_projeto:hover {
+    background-color: #ffd700;
+    color: #06144b;
+    border: 1px solid #06144b;
+}
+.projetos .btn_mostrar_projeto.remover {
+    display: none;
+}
+@keyframes gradient-animation {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}/*Vai na classe .sombra_interna, onde se chama o 'gradient-animation'*/
